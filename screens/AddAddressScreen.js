@@ -93,8 +93,8 @@ const AddAddressScreen = () => {
         </View>
 
         <View>
-          {address?.map((item) => (
-            <Pressable style={styles.addressContainer}>
+          {address?.map((item, index) => (
+            <Pressable style={styles.addressContainer} key={index}>
               <View style={styles.nameText}>
                 <Text style={{ fontWeight: "bold", fontSize: 15 }}>
                   {item?.name}
@@ -110,8 +110,13 @@ const AddAddressScreen = () => {
                 Pin code: {item?.postalCode}
               </Text>
 
-              <View>
-                <Pressable></Pressable>
+              <View style={styles.buttonGroup}>
+                <Pressable>
+                  <Text style={styles.button}>Edit</Text>
+                </Pressable>
+                <Pressable>
+                  <Text style={styles.button}>Remove</Text>
+                </Pressable>
               </View>
             </Pressable>
           ))}
@@ -139,5 +144,17 @@ const styles = StyleSheet.create({
   addressLine: {
     fontSize: 15,
     color: "#181818",
+  },
+  buttonGroup: {
+    flexDirection: "row",
+    gap: 10,
+  },
+  button: {
+    backgroundColor: "#F5F5F5",
+    borderWidth: 1,
+    borderColor: "#D0D0D0",
+    borderRadius: 5,
+    marginVertical: 5,
+    padding: 5,
   },
 });
